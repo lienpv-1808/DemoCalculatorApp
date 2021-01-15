@@ -1,4 +1,4 @@
-package com.li.democaculatorapp
+package com.li.calculatorapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,22 +17,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         onMultiClick(
-            button_0,
-            button_1,
-            button_2,
-            button_3,
-            button_4,
-            button_5,
-            button_6,
-            button_7,
-            button_8,
-            button_9,
-            button_Add,
-            button_Attack,
-            button_Divide,
-            button_Multi,
-            button_Result,
-            button_Delete
+            button0,
+            button1,
+            button2,
+            button3,
+            button4,
+            button5,
+            button6,
+            button7,
+            button8,
+            button9,
+            buttonAdd,
+            buttonAttack,
+            buttonDivide,
+            buttonMulti,
+            buttonResult,
+            buttonDelete
         )
     }
 
@@ -46,12 +46,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             in ARRAY_NUMBER_INPUT -> handleInputNumber(text)
             in ARRAY_OPERATOR -> handleCalculate(text)
             this.resources.getString(R.string.title_delete) -> {
-                text_Result.text = ""
+                textResult.text = ""
                 resetValue()
             }
             else -> {
                 if (firstInput.toString() == "" || secondInput.toString() == "")
-                    text_Result.text = this.resources.getString(R.string.alert_input)
+                    textResult.text = this.resources.getString(R.string.alert_input)
                 else
                     showResult()
             }
@@ -60,24 +60,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun handleCalculate(text: String) {
         if (firstInput.toString() == "") {
-            text_Result.text = this.resources.getString(R.string.alert_input)
+            textResult.text = this.resources.getString(R.string.alert_input)
         } else {
             when (text) {
                 this.resources.getString(R.string.title_add) -> {
                     operator = ADD_VALUE
-                    disableUnClickOperator(button_Attack, button_Multi, button_Divide)
+                    disableUnClickOperator(buttonAttack, buttonMulti, buttonDivide)
                 }
                 this.resources.getString(R.string.title_attack) -> {
                     operator = ATTACK_VALUE
-                    disableUnClickOperator(button_Add, button_Multi, button_Divide)
+                    disableUnClickOperator(buttonAdd, buttonMulti, buttonDivide)
                 }
                 this.resources.getString(R.string.title_multi) -> {
                     operator = MULTI_VALUE
-                    disableUnClickOperator(button_Add, button_Attack, button_Divide)
+                    disableUnClickOperator(buttonAdd, buttonAttack, buttonDivide)
                 }
                 this.resources.getString(R.string.title_divide) -> {
                     operator = DIVIDE_VALUE
-                    disableUnClickOperator(button_Add, button_Attack, button_Multi)
+                    disableUnClickOperator(buttonAdd, buttonAttack, buttonMulti)
                 }
 
             }
@@ -87,10 +87,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun handleInputNumber(text: String) {
         if (operator > 0) {
             secondInput.append(text)
-            text_Result.text = secondInput.toString()
+            textResult.text = secondInput.toString()
         } else {
             firstInput.append(text)
-            text_Result.text = firstInput.toString()
+            textResult.text = firstInput.toString()
         }
     }
 
@@ -100,15 +100,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (operator) {
             ADD_VALUE -> {
                 resultNumber = Calculators.add(firstNumber, secondNumber)
-                text_Result.text = resultNumber.toString()
+                textResult.text = resultNumber.toString()
             }
             ATTACK_VALUE -> {
                 resultNumber = Calculators.attack(firstNumber, secondNumber)
-                text_Result.text = resultNumber.toString()
+                textResult.text = resultNumber.toString()
             }
             MULTI_VALUE -> {
                 resultNumber = Calculators.multi(firstNumber, secondNumber)
-                text_Result.text = resultNumber.toString()
+                textResult.text = resultNumber.toString()
             }
             DIVIDE_VALUE -> {
                 handleDivide(firstNumber, secondNumber)
@@ -116,15 +116,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         }
         resetValue()
-        enableClickOperator(button_Attack, button_Add, button_Multi, button_Divide)
+        enableClickOperator(buttonAttack, buttonAdd, buttonMulti, buttonDivide)
     }
 
     private fun handleDivide(firstNumber: Int, secondNumber: Int) {
         try {
             resultNumber = Calculators.divide(firstNumber, secondNumber)
-            text_Result.text = resultNumber.toString()
+            textResult.text = resultNumber.toString()
         } catch (e: Exception) {
-            text_Result.text = this.resources.getString(R.string.warning)
+            textResult.text = this.resources.getString(R.string.warning)
         }
     }
 
@@ -152,6 +152,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         const val DIVIDE_VALUE = 4
         val ARRAY_NUMBER_INPUT = arrayListOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
         val ARRAY_OPERATOR = arrayListOf("+", "-", "X", ":")
-
     }
 }
