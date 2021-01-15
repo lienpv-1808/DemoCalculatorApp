@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">CalculatorApp</string>
+    <string name="app_name">DemoCaculatorApp</string>
+    <string name="title_8">8</string>
+    <string name="title_7">7</string>
+    <string name="title_9">9</string>
+    <string name="title_0">0</string>
+    <string name="title_divide">:</string>
+    <string name="title_4">4</string>
+    <string name="title_5">5</string>
+    <string name="title_6">6</string>
+    <string name="title_multi">X</string>
+    <string name="title_1">1</string>
+    <string name="title_2">2</string>
+    <string name="title_3">3</string>
+    <string name="title_add">+</string>
+    <string name="title_delete">AC</string>
+    <string name="title_equal">=</string>
+    <string name="title_attack">-</string>
+    <string name="warning">Can not divide by zero</string>
+    <string name="alert_input">Please write your input</string>
 </resources>
