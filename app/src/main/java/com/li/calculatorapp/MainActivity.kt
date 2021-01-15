@@ -1,9 +1,10 @@
-package com.li.democaculatorapp
+package com.li.calculatorapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import com.li.calculatorapp.R
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.StringBuilder
 

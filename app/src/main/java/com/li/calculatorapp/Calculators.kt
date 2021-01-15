@@ -1,4 +1,4 @@
-package com.li.democaculatorapp
+package com.li.calculatorapp
 
 object Calculators{
         fun add(firstNumber: Int, secondNumber: Int): Int = firstNumber + secondNumber
